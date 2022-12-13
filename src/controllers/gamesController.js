@@ -16,7 +16,7 @@ async function list(req, res){
             JOIN 
                 categories ON games."categoryId" = categories.id
             WHERE 
-                LOWER(games.name) ILIKE $1;`, [`${name}%`]
+                LOWER(games.name) LIKE $1;`, [`${name}%`]
         );
         res.send(games.rows);
     } catch (error) {
